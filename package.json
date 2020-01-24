@@ -1,0 +1,25 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "An app using node & mysql to help track an organization's employees & teams.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clauries/Employee-Tracker.git"
+  },
+  "author": "Laurie Schroeder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clauries/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/clauries/Employee-Tracker#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "inquirer": "^7.0.3",
+    "mysql": "^2.18.1"
+  }
+}
