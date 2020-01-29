@@ -163,3 +163,6 @@ CREATE TABLE EMPLOYEES (
 );
 
 Look at questions found in activity 13 - these can help you search for specific columns
+
+
+use Left Join over inner role

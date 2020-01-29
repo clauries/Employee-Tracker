@@ -35,7 +35,7 @@ function askQuestions() {
                     "Quit"
                     //"View employees by manager"
                     //"Update an employee"
-                    //"Delete information"
+                    //"Delete information" See the Slack class activities
                     //"View utilized budget for a deptartment"
                 ]
             }
@@ -80,6 +80,7 @@ function viewDepts() {
     connection.query("SELECT * FROM DEPARTMENT", function (err, result) {
         if (err) throw err;
         console.table(result);
+        goToQuestions();
     });
 }
 
@@ -98,6 +99,7 @@ function addDepts() {
             connection.query(sqlQuery, function (err, result, fields) {
                 if (err) throw err;
                 console.log(`Department ${answers.department} added`);
+                goToQuestions();
             });
         });
 };
@@ -107,6 +109,7 @@ function viewRoles() {
     connection.query("SELECT ID, TITLE FROM ROLES", function (err, result) {
         if (err) throw err;
         console.table(result);
+        goToQuestions();
     });
 };
 
@@ -136,6 +139,7 @@ function addRoles() {
             console.log(`Role ${answers.role} added`);
             console.log (`Salary of ${answers.salary} added`);
             console.log(`Role in department ID: ${answers.dept}`);
+            goToQuestions();
         });
     });
 };
@@ -149,6 +153,7 @@ function viewEmployees() {
     connection.query("SELECT * FROM EMPLOYEES", function (err, result) {
         if (err) throw err;
         console.table(result);
+        goToQuestions();
     });
 };
 
@@ -183,6 +188,7 @@ function addEmployee() {
             console.log(`Employee ${answers.firstName} ${answers.lastName} added`);
             console.log (`Role ID of ${answers.roleID} added`);
             console.log(`Manager ID of ${answers.managerID} added`);
+            goToQuestions();
         });
     });
 };
@@ -209,7 +215,7 @@ function updateRole() {
             if (err) throw err;
             console.log(`Employee # ${answers.employeeID} updated`);
             console.log (`Role ID now ${answers.roleID}`);
-            
+            goToQuestions();
         });
     });
     
@@ -226,16 +232,15 @@ function goToQuestions() {
         .prompt([
             {
                 type: "list",
-                name: "options",
+                name: "choices",
                 message: "Return to menu or quit?",
                 choices: [
                     "Return to menu",
                     "Quit"
                 ]
             }
-        ]).then(answers => {
-            (function (answers) {
-                switch (answers.options) {
+        ]).then(function (answers) {
+                switch (answers.choices) {
                     case "Return to menu":
                         askQuestions();
                         break;
@@ -247,5 +252,5 @@ function goToQuestions() {
                 }
             });
 
-        });
+        
 }
